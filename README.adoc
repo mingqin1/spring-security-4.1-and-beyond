@@ -4,6 +4,7 @@ This project is maven version of https://github.com/rwinch/spring-security-4.1-a
 
 The project is created with Netbeans 8.2, maven( version 3.5.0) and "NB Springboot" plugin.
 
+The presentation branch is tested.
 
 NOTE: All JavaScript REST calls should be accept application/json
 
