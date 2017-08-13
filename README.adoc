@@ -1,0 +1,10 @@
+Welcome to the spring-security-4.1-and-beyond 
+
+This project is maven version of https://github.com/rwinch/spring-security-4.1-and-beyond.
+
+The project is created with Netbeans 8.2, maven( version 3.5.0) and "NB Springboot" plugin.
+
+
+NOTE: All JavaScript REST calls should be accept application/json
+
+Authenticate with rob@example.com / password
