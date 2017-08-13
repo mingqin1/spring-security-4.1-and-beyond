@@ -1,0 +1,24 @@
+security:
+  user:
+    name: joe@example.com
+    password: password
+
+spring:
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+  datasource:
+    data: classpath:data.sql
+  devtools:
+    restart:
+      exclude: META-INF/maven/**,META-INF/resources/**,resources/**,public/**,**/*Test.class,**/*Tests.class
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    sample: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } --- [%15.15t] %C:%L : %m%n%xEx{full,EX_DISPLAY_EVAL}" 
