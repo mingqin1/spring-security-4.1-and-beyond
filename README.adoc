@@ -8,3 +8,32 @@ The project is created with Netbeans 8.2, maven( version 3.5.0) and "NB Springbo
 NOTE: All JavaScript REST calls should be accept application/json
 
 Authenticate with rob@example.com / password
+
+
+To Access h2 embedded database console in browser at URL http://localhost:8080/h2-console/
+In login h2 console,  JDBC URL's value should be  jdbc:h2:mem:testdb
+Implementing configure method of SecurityConfig.java as following snippet codes.
+
+@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+		        .csrf().disable()
+                     
+			.authorizeRequests()
+				.antMatchers("/","/assets/**", "/webjars/**").permitAll()
+				.anyRequest().authenticated()
+				.and()
+			.httpBasic()
+				.and()
+			.formLogin()
+				.loginPage("/")
+				.permitAll()
+				.and()
+			.headers().frameOptions().disable()
+				  .contentSecurityPolicy("default-src 'self' " +
+						"https://ajax.googleapis.com " +
+						"https://cdnjs.cloudflare.com; " +
+						"style-src 'self'").reportOnly();
+                                
+	}
+	
