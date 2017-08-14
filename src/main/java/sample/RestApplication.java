@@ -15,24 +15,28 @@
  */
 package sample;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author Rob Winch
  */
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+@SpringBootApplication
+@Configuration
+@ComponentScan
+@EnableAutoConfiguration
 public class RestApplication {
-        private static final Logger logger = LoggerFactory.getLogger(RestApplication.class);
-	public static void main(String[] args) {
-        
-                SpringApplication.run(RestApplication.class, args);
-            
-		
-	}
+
+    private static final Logger logger = LoggerFactory.getLogger(RestApplication.class);
+
+    public static void main(String[] args) {
+
+        SpringApplication.run(RestApplication.class, args);
+
+    }
 }
