@@ -37,11 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		        .csrf().disable()
-                        /*
-				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-				.and()
-                         */       
+                        .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+			        .and()      
 			.authorizeRequests()
 				.antMatchers("/","/assets/**", "/webjars/**").permitAll()
 				//.antMatchers("/users/{userId}").access("@authz.check(#userId,principal)")
@@ -54,11 +51,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/")
 				.permitAll()
 				.and()
-			.headers().frameOptions().disable()
+			.headers()
 				  .contentSecurityPolicy("default-src 'self' " +
 						"https://ajax.googleapis.com " +
 						"https://cdnjs.cloudflare.com; " +
-						"style-src 'self'").reportOnly();
+						"style-src 'self' 'unsafe-inline'");
                                 
 	}
 	// @formatter:on
