@@ -10,8 +10,10 @@ NOTE: All JavaScript REST calls should be accept application/json
 Authenticate with rob@example.com / password
 
 
-To Access h2 embedded database console in browser at URL http://localhost:8080/h2-console/
-In login h2 console,  JDBC URL's value should be  jdbc:h2:mem:testdb
+To Access h2 embedded database console in browser, using URL http://localhost:8080/h2-console/
+
+In login h2 console,  JDBC URL's value should be  "jdbc:h2:mem:testdb"
+
 Implementing configure method of SecurityConfig.java as following snippet codes.
 
 @Override
