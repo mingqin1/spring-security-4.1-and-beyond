@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import sample.data.User;
 import sample.security.CurrentUser;
-import sample.security.MockCurrentUser;
+
 
 /**
  * @author Rob Winch
@@ -33,8 +33,7 @@ import sample.security.MockCurrentUser;
 public class SecurityController {
 
 	@RequestMapping(value = "/principal")
-	public ResponseEntity<User> currentPrincipal() {
-		User currentUser = MockCurrentUser.currentUser();
+	public ResponseEntity<User> currentPrincipal(@CurrentUser User currentUser) {
 		return new ResponseEntity<User>(currentUser, HttpStatus.OK);
 	}
 }

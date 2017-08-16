@@ -30,19 +30,20 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
  */
 //@Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	// @formatter:off
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-                        .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                        .csrf()
+                                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 			        .and()      
 			.authorizeRequests()
 				.antMatchers("/","/assets/**", "/webjars/**").permitAll()
-				//.antMatchers("/users/{userId}").access("@authz.check(#userId,principal)")
-				//.mvcMatchers("/admin").denyAll()
+				.antMatchers("/users/{userId}").access("@authz.check(#userId,principal)")
+				.mvcMatchers("/admin").denyAll()
 				.anyRequest().authenticated()
 				.and()
 			.httpBasic()

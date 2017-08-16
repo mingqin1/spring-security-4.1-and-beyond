@@ -17,15 +17,13 @@ package sample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author Rob Winch
  */
 @SpringBootApplication
 public class RestApplication {
-        private static final Logger logger = LoggerFactory.getLogger(RestApplication.class);
+
 	public static void main(String[] args) {
         
                 SpringApplication.run(RestApplication.class, args);

@@ -30,7 +30,7 @@ import sample.data.MessageRepository;
 import sample.data.User;
 import sample.data.UserRepository;
 import sample.security.CurrentUser;
-import sample.security.MockCurrentUser;
+
 
 /**
  * Controller for managing {@link Message} instances.
@@ -69,8 +69,8 @@ public class MessageController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public Message save(@Valid @RequestBody Message message) {
-		User currentUser = MockCurrentUser.currentUser();
+	public Message save(@Valid @RequestBody Message message, @CurrentUser User currentUser) {
+		
 		message.setTo(userRepository.findByEmail(message.getTo().getEmail()));
 		message.setFrom(userRepository.findByEmail(currentUser.getEmail()));
 		message = messageRepository.save(message);
